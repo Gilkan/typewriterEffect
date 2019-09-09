@@ -4,6 +4,14 @@
  * @param {INT} writingspeed containing in miliseconds the speed between each character.
  * @param {INT} cursorspeed containing in miliseconds the speed to blink the simulated cursor.
  * @param {STRING} cursorcolor containing the string with the cursor color. All formats acceptable by CSS are supported.
+ *
+ * The container to apply the effect must have only the text to use the effect on.
+ * 
+ * Example:
+ * 
+ * <div id="typewriterContainer1">Typewrite this text here...</div>
+ * <script>typewriting("typewriterContainer1")</script>
+ * 
  */
 function typewriting(elementId, delay = 0, writingspeed = 100, cursorspeed = 600, cursorcolor = mainColor){
   var containerElement = document.getElementById(elementId);
