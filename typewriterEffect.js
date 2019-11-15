@@ -13,7 +13,7 @@
  * <script>typewriting("typewriterContainer1")</script>
  * 
  */
-function typewriting(elementId, delay = 0, writingspeed = 100, cursorspeed = 600, cursorcolor = mainColor){
+function typewriting(elementId, delay = 0, writingspeed = 100, cursorspeed = 600){
   var containerElement = document.getElementById(elementId);
   containerElement.style.display = "inline block";
   var fullText = containerElement.innerHTML;
@@ -22,7 +22,7 @@ function typewriting(elementId, delay = 0, writingspeed = 100, cursorspeed = 600
   var cursorArea = document.createElement("span");
   containerElement.appendChild(textArea);
   containerElement.appendChild(cursorArea);
-  simulateWritingCursor(cursorArea, cursorspeed, cursorcolor);
+  simulateWritingCursor(cursorArea, cursorspeed);
   var typewriterSet = setTimeout(function(){setInterval(function(){if(typewriter(textArea, fullText) == false){clearInterval(typewriterSet)}},writingspeed)},delay);
 }
 
@@ -34,15 +34,14 @@ function typewriter(containerElemt, fulltext){
   containerElemt.innerHTML = actualText + fulltext[actualText.length];
 }
 
-function simulateWritingCursor(element, speed, color){
+function simulateWritingCursor(element, speed){
   var blinkingcursor = document.createElement("span");
   blinkingcursor.textContent = "|";
-  blinkingcursor.style.color = color;
   element.append(blinkingcursor);
-  setInterval(function(){cursorBlinker(blinkingcursor, color)},speed);
+  setInterval(function(){cursorBlinker(blinkingcursor)},speed);
 }
 
-function cursorBlinker(element, color){
+function cursorBlinker(element){
   console.log("blinking");
   if(element.style.opacity == "1"){
     element.style.opacity = "0";
