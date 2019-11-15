@@ -23,7 +23,11 @@ function typewriting(elementId, delay = 0, writingspeed = 100, cursorspeed = 600
   containerElement.appendChild(textArea);
   containerElement.appendChild(cursorArea);
   simulateWritingCursor(cursorArea, cursorspeed);
-  var typewriterSet = setTimeout(function(){setInterval(function(){if(typewriter(textArea, fullText) == false){clearInterval(typewriterSet)}},writingspeed)},delay);
+    if(writingspeed > 0){
+      var typewriterSet = setTimeout(function(){setInterval(function(){if(typewriter(textArea, fullText) == false){clearInterval(typewriterSet)}},writingspeed)},delay);
+    } else {
+      textArea.innerHTML = fullText;
+    }
 }
 
 function typewriter(containerElemt, fulltext){
